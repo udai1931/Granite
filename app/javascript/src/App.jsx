@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import { setAuthHeaders } from "apis/axios";
-import { initializeLogger } from "./common/logger";
+import { ToastContainer } from "react-toastify";
 
 import CreateTask from "components/Tasks/CreateTask";
 import Dashboard from "components/Dashboard";
 import PageLoader from "components/PageLoader";
+import { registerIntercepts, setAuthHeaders } from "apis/axios";
+import { initializeLogger } from "common/logger";
 
 const App = () => {
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    /*eslint no-undef: "off"*/
     initializeLogger();
+    registerIntercepts();
     setAuthHeaders(setLoading);
-    // logger.info("Never use console.log");
-    // logger.error("Never use console.error");
   }, []);
 
   if (loading) {
@@ -28,10 +26,10 @@ const App = () => {
   }
 
   return (
-    // <h1>React</h1>
     <Router>
+      <ToastContainer />
       <Switch>
-      <Route exact path="/tasks/create" component={CreateTask} />
+        <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
