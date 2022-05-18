@@ -21,7 +21,7 @@ const TableRow = ({ data, showTask, destroyTask }) => {
               className="text-bb-purple"
               onClick={() => showTask(rowData.slug)}
             >
-              Show
+              {rowData.slug}
             </a>
           </td>
           <td

@@ -33,7 +33,7 @@ class TasksController < ApplicationController
     end
 
     def load_task!
-      @task = Task.find_by!(params[:id])
+      @task = Task.find_by!(slug: params[:slug])
     end
 
 end
