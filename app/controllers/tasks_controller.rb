@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :load_task!, only: %i[show update]  
+  before_action :load_task!, only: %i[show update destroy]  
   
   def index
     tasks = Task.all
@@ -17,9 +17,13 @@ class TasksController < ApplicationController
   end
 
   def update
-    puts task_params
-    # @task.update!(task_params)
-    # respond_with_success(t("successfully_updated"))
+    @task.update!(task_params)
+    respond_with_success(t("successfully_updated"))
+  end
+
+  def destroy 
+    @task.destroy!
+    respond_with_json
   end
 
   private

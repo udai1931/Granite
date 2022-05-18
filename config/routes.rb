@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #     get 'delete_multiple'
   #   end
   # end
-  resources :tasks, except: %i[new edit destroy], param: :slug
+  resources :tasks, except: %i[new edit], param: :slug
 
   root "home#index"
   get '*path', to: 'home#index', via: :all
