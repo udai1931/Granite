@@ -35,3 +35,4 @@ en:
     slug:
       immutable: "is immutable!"
   successfully_created: "Task was successfully created!"
+  successfully_updated: "Task was successfully updated!"
