@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   
   def index
     tasks = Task.all.as_json(include: { assigned_user: { only: %i[name id] } })
-    respond_with_json(tasks)
+    respond_with_json(tasks: tasks)
   end
 
   def show 
@@ -11,6 +11,8 @@ class TasksController < ApplicationController
   end
 
   def create
+    str = task_params
+    puts "**************************************#{str}************************************************************"
     task = Task.new(task_params)
     task.save!
     respond_with_success(t("successfully_created"))
@@ -29,7 +31,7 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:title, :assigned_user_id)
+      params.require(:task).permit(:title ,:assigned_user_id)
     end
 
     def load_task!
