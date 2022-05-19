@@ -12,6 +12,8 @@ import EditTask from "./components/Tasks/EditTask";
 import Login from "components/Authentication/Login";
 import Signup from "components/Authentication/Signup";
 import PrivateRoute from "components/Common/PrivateRoute";
+import { getFromLocalStorage } from "utils/storage";
+import { either, isEmpty, isNil } from "ramda";
 
 const App = () => {
   const [loading, setLoading] = useState(true);

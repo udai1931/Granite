@@ -34,3 +34,6 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Restarting application server =="
   system! 'bin/rails restart'
 end
+
+puts "\n== Setting up the app =="
+system! 'bundle exec rake setup'

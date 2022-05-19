@@ -9,7 +9,9 @@ const PrivateRoute = ({
   redirectRoute,
   ...props
 }) => {
+    console.log("aa")
   if (!condition) {
+      console.log("bb")
     return (
       <Redirect
         to={{
