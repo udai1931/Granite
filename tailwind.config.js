@@ -2,6 +2,7 @@ module.exports = {
   content: [],
   theme: {
     extend: {
+      
       colors: {
         "bb-purple": "#5469D4",
         "bb-env": "#F1F5F9",
