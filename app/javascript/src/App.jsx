@@ -9,10 +9,14 @@ import { registerIntercepts, setAuthHeaders } from "apis/axios";
 import { initializeLogger } from "common/logger";
 import ShowTask from "./components/Tasks/ShowTask";
 import EditTask from "./components/Tasks/EditTask";
-import Signup from "./components/Authentication/Signup";
+import Login from "components/Authentication/Login";
+import Signup from "components/Authentication/Signup";
+import PrivateRoute from "components/Common/PrivateRoute";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const authToken = getFromLocalStorage("authToken");
+  const isLoggedIn = !either(isNil, isEmpty)(authToken);
 
   useEffect(() => {
     initializeLogger();
@@ -35,8 +39,14 @@ const App = () => {
         <Route exact path="/tasks/:slug/edit" component={EditTask}/>
         <Route exact path="/tasks/:slug/show" component={ShowTask}/>
         <Route exact path="/tasks/create" component={CreateTask} />
-        <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute
+          path="/"
+          redirectRoute="/login"
+          condition={isLoggedIn}
+          component={Dashboard}
+        />
       </Switch>
     </Router>
   );
