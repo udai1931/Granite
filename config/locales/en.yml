@@ -41,3 +41,4 @@ en:
     incorrect_credentials: "Incorrect credentials, try again."
   authorization:
     denied: "Access denied. You are not authorized to perform this action."
+  successfully_deleted: "%{entity} was successfully deleted!"
