@@ -35,8 +35,7 @@ const TableRow = ({
           </td>
           <td
             className={classnames(
-               "block w-64 px-6 py-4 text-sm font-medium leading-8
-                text-bb-purple capitalize truncate",
+               "block w-64 px-6 py-4 text-sm font-medium leading-8 text-bb-purple capitalize truncate",
               {
                 "cursor-pointer": !isCompleted,
                 "text-opacity-50": isCompleted,
