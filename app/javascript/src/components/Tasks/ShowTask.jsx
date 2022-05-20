@@ -88,7 +88,7 @@ const ShowTask = () => {
        text-opacity-50"
       >
         <span>Assigned To : </span>
-        {task?.assigned_user.name}
+        {task?.assigned_user?.name}
       </h2>
       <h2 className="pb-3 mb-3 text-md leading-5 text-bb-gray-600 text-opacity-50">
         <span>Created By : </span>
