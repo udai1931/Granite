@@ -5,7 +5,6 @@ const list = () => axios.get("/tasks");
 const show = slug => axios.get(`/tasks/${slug}`);
 
 const create = payload => {
-    console.log(payload)
     axios.post("/tasks/", payload);
 }
 

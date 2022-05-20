@@ -17,7 +17,6 @@ const CreateTask = ({ history }) => {
     setLoading(true);
     try {
       let obj = { task: { title: title,assigned_user_id: userId } }
-      console.log(obj)
       await tasksApi.create(obj);
       setLoading(false);
       history.push("/");
@@ -30,7 +29,6 @@ const CreateTask = ({ history }) => {
   const fetchUserDetails = async () => {
     try {
       const response = await usersApi.list();
-      console.log(response);
       setUsers(response.data.users);
     } catch (error) {
       logger.error(error);

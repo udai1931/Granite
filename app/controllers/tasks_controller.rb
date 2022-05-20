@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :load_task!, only: %i[show update destroy]
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
-  
+
   def index
     tasks = policy_scope(Task)
     tasks_with_assigned_user = tasks.as_json(include: { assigned_user: { only: %i[name id] } })
@@ -18,7 +18,9 @@ class TasksController < ApplicationController
 
   def show
     authorize @task
+    @comments = @vtask.comments.order('created_at DESC')
   end
+
 
   def update
     authorize @task
