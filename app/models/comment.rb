@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comment < ApplicationRecord
   MAX_CONTENT_LENGTH = 511
 

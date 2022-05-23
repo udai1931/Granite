@@ -1,21 +1,22 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
-  
-    MAX_TITLE_LENGTH = 125
-    RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
-    enum status: { unstarred: "unstarred", starred: "starred" }
-    enum progress: { pending: "pending", completed: "completed" }
+  MAX_TITLE_LENGTH = 125
+  RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
+  enum status: { unstarred: "unstarred", starred: "starred" }
+  enum progress: { pending: "pending", completed: "completed" }
 
-    belongs_to :task_owner, foreign_key: "task_owner_id", class_name: "User"
-    belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
-    has_many :comments, dependent: :destroy
-    
-    validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
-    validates :slug, uniqueness: true
-    validate :slug_not_changed
+  belongs_to :task_owner, foreign_key: "task_owner_id", class_name: "User"
+  belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
+  has_many :comments, dependent: :destroy
 
-    before_create :set_slug
+  validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
+  validates :slug, uniqueness: true
+  validate :slug_not_changed
 
-    private
+  before_create :set_slug
+
+  private
 
     def set_slug
       title_slug = title.parameterize
@@ -32,11 +33,11 @@ class Task < ApplicationRecord
       end
       slug_candidate = slug_count.positive? ? "#{title_slug}-#{slug_count + 1}" : title_slug
       self.slug = slug_candidate
-    end        
-    
+    end
+
     def slug_not_changed
       if slug_changed? && self.persisted?
-        errors.add(:slug, t('task.slug.immutable'))
+        errors.add(:slug, t("task.slug.immutable"))
       end
     end
 
@@ -50,5 +51,4 @@ class Task < ApplicationRecord
       end
       starred + unstarred
     end
-
 end

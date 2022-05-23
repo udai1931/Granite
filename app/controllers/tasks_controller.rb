@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :load_task!, only: %i[show update destroy]
   after_action :verify_authorized, except: :index
@@ -9,7 +11,7 @@ class TasksController < ApplicationController
     @pending_tasks = tasks.includes(:assigned_user).of_status(:pending)
     @completed_tasks = tasks.of_status(:completed)
   end
-  
+
   def create
     task = current_user.created_tasks.new(task_params)
     authorize task
@@ -19,28 +21,25 @@ class TasksController < ApplicationController
 
   def show
     authorize @task
-    @comments = @task.comments.order('created_at DESC')
+    @comments = @task.comments.order("created_at DESC")
   end
-
 
   def update
     authorize @task
     @task.update!(task_params)
     respond_with_success(t("successfully_updated", entity: "Task")) unless params.key?(:quiet)
   end
-  
 
   def destroy
     authorize @task
     @task.destroy!
     respond_with_success("successfully_deleted", entity: "Task") unless params.key?(:quiet)
   end
-  
 
   private
 
     def task_params
-      params.require(:task).permit(:title, :assigned_user_id,:progress,:status)
+      params.require(:task).permit(:title, :assigned_user_id, :progress, :status)
     end
 
     def load_task!
