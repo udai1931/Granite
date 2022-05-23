@@ -155,6 +155,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.6.0)
     regexp_parser (2.4.0)
     rexml (3.2.5)
     rubocop (1.29.1)
@@ -186,6 +187,10 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    sidekiq (6.4.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -240,6 +245,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   sass-rails (>= 6)
+  sidekiq
   simplecov
   sqlite3 (~> 1.4)
   tzinfo-data

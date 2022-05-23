@@ -9,6 +9,7 @@ ruby "3.0.2"
 gem "bcrypt", "~> 3.1.13"
 gem "pundit"
 gem "rails", "~> 6.1.4", ">= 6.1.4.1"
+gem "sidekiq"
 gem "simplecov", require: false, group: :test
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
