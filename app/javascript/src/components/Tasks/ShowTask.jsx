@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+
 import { useParams, useHistory } from "react-router-dom";
 
-import tasksApi from "apis/tasks";
 import commentsApi from "apis/comments";
+import tasksApi from "apis/tasks";
+import Comments from "components/Comments";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
-import Comments from "components/Comments";
 
 const ShowTask = () => {
   const { slug } = useParams();
@@ -14,7 +15,7 @@ const ShowTask = () => {
   const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(false);
 
-  let history = useHistory();
+  const history = useHistory();
 
   const destroyTask = async () => {
     try {
@@ -66,31 +67,31 @@ const ShowTask = () => {
 
   return (
     <Container>
-      <div className="flex justify-between text-bb-gray-600 mt-10">
-        <h1 className="pb-3 mt-5 mb-3 text-lg leading-5 font-bold">
+      <div className="mt-10 flex justify-between text-bb-gray-600">
+        <h1 className="mt-5 mb-3 pb-3 text-lg font-bold leading-5">
           {task?.title}
         </h1>
-        <div className="bg-bb-env px-2 mt-2 mb-4 rounded">
+        <div className="rounded mt-2 mb-4 bg-bb-env px-2">
           <i
-            className="text-2xl text-center transition duration-300
-             ease-in-out ri-delete-bin-5-line hover:text-bb-red mr-2"
+            className="transition ri-delete-bin-5-line mr-2 text-center
+             text-2xl duration-300 ease-in-out hover:text-bb-red"
             onClick={destroyTask}
           ></i>
           <i
-            className="text-2xl text-center transition duration-300
-             ease-in-out ri-edit-line hover:text-bb-yellow"
+            className="transition ri-edit-line text-center text-2xl
+             duration-300 ease-in-out hover:text-bb-yellow"
             onClick={updateTask}
           ></i>
         </div>
       </div>
       <h2
-        className="pb-3 mb-3 text-md leading-5 text-bb-gray-600
+        className="text-md mb-3 pb-3 leading-5 text-bb-gray-600
        text-opacity-50"
       >
         <span>Assigned To : </span>
         {task?.assigned_user?.name}
       </h2>
-      <h2 className="pb-3 mb-3 text-md leading-5 text-bb-gray-600 text-opacity-50">
+      <h2 className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50">
         <span>Created By : </span>
         {task?.task_owner?.name}
       </h2>

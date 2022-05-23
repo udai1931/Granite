@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 
+import tasksApi from "apis/tasks";
 import usersApi from "apis/users";
 import Container from "components/Container";
 import TaskForm from "components/Tasks/Form/TaskForm";
-import tasksApi from "apis/tasks";
 
 const CreateTask = ({ history }) => {
   const [title, setTitle] = useState("");
   const [userId, setUserId] = useState("");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [pageLoading, setPageLoading] = useState(true);
+  // const [pageLoading, setPageLoading] = useState(true);
 
   const handleSubmit = async event => {
     event.preventDefault();
     setLoading(true);
     try {
-      let obj = { task: { title: title,assigned_user_id: userId } }
+      const obj = { task: { title: title, assigned_user_id: userId } };
       await tasksApi.create(obj);
       setLoading(false);
       history.push("/");
@@ -33,13 +33,13 @@ const CreateTask = ({ history }) => {
     } catch (error) {
       logger.error(error);
     } finally {
-      setPageLoading(false);
+      // setPageLoading(false);
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchUserDetails();
-  },[])
+  }, []);
 
   return (
     <Container>

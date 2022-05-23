@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { all, isNil, isEmpty, either } from "ramda";
 
 import tasksApi from "apis/tasks";
@@ -69,7 +70,7 @@ const Dashboard = ({ history }) => {
 
   if (loading) {
     return (
-      <div className="w-screen h-screen">
+      <div className="h-screen w-screen">
         <PageLoader />
       </div>
     );
@@ -78,7 +79,7 @@ const Dashboard = ({ history }) => {
   if (all(either(isNil, isEmpty), [pendingTasks, completedTasks])) {
     return (
       <Container>
-        <h1 className="my-5 text-xl leading-5 text-center">
+        <h1 className="my-5 text-center text-xl leading-5">
           You have not created or been assigned any tasks 🥳
         </h1>
       </Container>

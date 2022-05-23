@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import LoginForm from "components/Authentication/Form/LoginForm";
 import authApi from "apis/auth";
 import { setAuthHeaders } from "apis/axios";
+import LoginForm from "components/Authentication/Form/LoginForm";
 import { setToLocalStorage } from "utils/storage";
 
 const Login = () => {

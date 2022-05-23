@@ -1,8 +1,9 @@
 import React from "react";
 
+import Select from "react-select";
+
 import Button from "components/Button";
 import Input from "components/Input";
-import Select from "react-select";
 
 const TaskForm = ({
   type = "create",
@@ -24,15 +25,15 @@ const TaskForm = ({
   };
 
   return (
-    <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+    <form className="mx-auto max-w-lg" onSubmit={handleSubmit}>
       <Input
         label="Title"
         placeholder="Todo Title (Max 50 Characters Allowed)"
         value={title}
         onChange={e => setTitle(e.target.value.slice(0, 50))}
       />
-      <div className="flex flex-row items-center justify-start mt-3">
-        <p className="w-3/12 leading-5 text-gray-800 text-md">Assigned To: </p>
+      <div className="mt-3 flex flex-row items-center justify-start">
+        <p className="text-md w-3/12 leading-5 text-gray-800">Assigned To: </p>
         <div className="w-full">
           <Select
             options={userOptions}

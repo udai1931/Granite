@@ -31,6 +31,7 @@ const handleSuccessResponse = response => {
       Toastr.success(response.data.notice);
     }
   }
+
   return response;
 };
 
@@ -45,6 +46,7 @@ const handleErrorResponse = axiosErrorObject => {
   if (axiosErrorObject.response?.status === 423) {
     window.location.href = "/";
   }
+
   return Promise.reject(axiosErrorObject);
 };
 
