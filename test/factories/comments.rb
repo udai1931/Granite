@@ -8,7 +8,7 @@ FactoryBot.define do
     content { Faker::Lorem.paragraph }
     # association :user, factory: :user
     # association :task, factory: :user
-    uer
+    user
     task
   end
 end

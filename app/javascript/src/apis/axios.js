@@ -59,4 +59,4 @@ const resetAuthTokens = () => {
   delete axios.defaults.headers["X-Auth-Token"];
 };
 
-export { setAuthHeaders, registerIntercepts };
+export { setAuthHeaders, registerIntercepts, resetAuthTokens };
