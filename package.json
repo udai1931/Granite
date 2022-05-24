@@ -16,6 +16,7 @@
     ]
   },
   "name": "granite",
+  "entry": "./app/javascript/packs/application.js",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
