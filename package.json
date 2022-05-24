@@ -23,6 +23,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/plugin-transform-runtime": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
     "@babel/preset-react": "^7.16.7",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
