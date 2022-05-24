@@ -46,7 +46,8 @@
     "react_ujs": "^2.6.2",
     "remixicon": "^2.5.0",
     "tailwind": "^1.0.1",
-    "tailwindcss": "1.9.6"
+    "tailwindcss": "1.9.6",
+    "babel-plugin-js-logger": "^1.0.17"
   },
   "version": "0.1.0",
   "devDependencies": {
