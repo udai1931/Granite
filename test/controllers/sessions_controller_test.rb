@@ -27,6 +27,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     non_existent_email = "this_email_does_not_exist_in_db@example.email"
     post session_path, params: { login: { email: non_existent_email, password: "welcome" } }, as: :json
     assert_response :not_found
-    assert_equal response.parsed_body["error"], "Couldn't find User"
+    assert_equal response_json["error"], t("not_found", entity: "User")
   end
 end

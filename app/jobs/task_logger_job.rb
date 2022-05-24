@@ -9,5 +9,5 @@ class TaskLoggerJob < ApplicationJob
     log = Log.create! task_id: task.id, message: msg
 
     puts log.message
-  end
+end
 end

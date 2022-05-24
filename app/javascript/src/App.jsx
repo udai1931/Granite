@@ -14,6 +14,7 @@ import PageLoader from "components/PageLoader";
 import CreateTask from "components/Tasks/CreateTask";
 import { getFromLocalStorage } from "utils/storage";
 
+import MyPreferences from "./components/MyPreferences";
 import EditTask from "./components/Tasks/EditTask";
 import ShowTask from "./components/Tasks/ShowTask";
 
@@ -45,6 +46,7 @@ const App = () => {
         <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/my/preferences" component={MyPreferences} />
         <PrivateRoute
           path="/"
           redirectRoute="/login"

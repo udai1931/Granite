@@ -6,6 +6,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+# For periodic sidekiq jobs
+gem "sidekiq-cron"
+
+# For opening mails in development env
+gem "letter_opener", group: :development
+
 gem "bcrypt", "~> 3.1.13"
 gem "pundit"
 gem "rails", "~> 6.1.4", ">= 6.1.4.1"
