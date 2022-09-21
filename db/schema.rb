@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_134529) do
+ActiveRecord::Schema.define(version: 2022_09_21_074700) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -57,8 +55,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_134529) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "last_notification_sent_date"],
-      name: "index_user_preferences_on_user_id_and_notification_sent_date", unique: true
+    t.index ["user_id", "last_notification_sent_date"], name: "index_user_preferences_on_user_id_and_notification_sent_date", unique: true
     t.index ["user_id"], name: "index_user_notifications_on_user_id"
   end
 
